@@ -15,6 +15,8 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useAuth } from '@/hooks/use-auth';
 import { useEffect } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
+import { InstallPwaDialog } from '@/components/dashboard/install-pwa-dialog';
+import { useFcm } from '@/hooks/use-fcm';
 
 const BottomNavBar = () => {
   const pathname = usePathname();
@@ -22,7 +24,7 @@ const BottomNavBar = () => {
 
   if (loading) {
     return (
-        <div className="fixed bottom-0 left-0 z-50 w-full h-16 border-t border-border bg-muted">
+        <div className="fixed bottom-0 left-0 z-50 w-full h-16 border-t border-border bg-muted md:hidden">
             <div className="grid h-full max-w-lg grid-cols-5 mx-auto">
                 {[...Array(5)].map((_, i) => <Skeleton key={i} className="h-full w-full" />)}
             </div>
@@ -90,6 +92,7 @@ export default function DashboardLayout({
 }) {
   const { user, loading } = useAuth();
   const router = useRouter();
+  useFcm();
 
   useEffect(() => {
     if (!loading && !user) {
@@ -112,6 +115,7 @@ export default function DashboardLayout({
         {children}
       </main>
       <BottomNavBar />
+      <InstallPwaDialog />
     </div>
   );
 }
