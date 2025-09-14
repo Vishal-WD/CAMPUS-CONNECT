@@ -130,7 +130,7 @@ export function CreateUserDialog({ isOpen, onOpenChange, onUserCreated }: Create
       onOpenChange(false);
       form.reset();
 
-    } catch (error: any) => {
+    } catch (error: any) {
       console.error("Error creating user:", error);
       let description = 'An unknown error occurred.';
       if (error.code === 'auth/email-already-in-use') {
