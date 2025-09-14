@@ -24,7 +24,7 @@ const BottomNavBar = () => {
 
   if (loading) {
     return (
-        <div className="fixed bottom-0 left-0 z-50 w-full h-16 border-t border-border bg-muted md:hidden">
+        <div className="fixed bottom-0 left-0 z-50 w-full h-16 border-t border-border bg-muted">
             <div className="grid h-full max-w-lg grid-cols-5 mx-auto">
                 {[...Array(5)].map((_, i) => <Skeleton key={i} className="h-full w-full" />)}
             </div>
@@ -42,7 +42,7 @@ const BottomNavBar = () => {
   ];
 
   return (
-    <div className="fixed bottom-0 left-0 z-50 w-full h-16 border-t border-border bg-primary md:hidden">
+    <div className="fixed bottom-0 left-0 z-50 w-full h-16 border-t border-border bg-primary">
       <div 
         className="grid h-full max-w-lg mx-auto font-medium"
         style={{ gridTemplateColumns: `repeat(${allMenuItems.length}, minmax(0, 1fr))` }}
@@ -68,10 +68,10 @@ const LoadingScreen = () => {
           <Skeleton className="h-8 w-8 rounded-full" />
         </div>
       </header>
-      <main className="flex-1 p-4 md:p-6 lg:p-8 mb-16 md:mb-0">
+      <main className="flex-1 p-4 md:p-6 lg:p-8 mb-16">
         <Skeleton className="h-64 w-full" />
       </main>
-      <div className="fixed bottom-0 left-0 z-50 w-full h-16 bg-muted border-t border-border md:hidden">
+      <div className="fixed bottom-0 left-0 z-50 w-full h-16 bg-muted border-t border-border">
           <div className="grid h-full max-w-lg grid-cols-5 mx-auto">
               <Skeleton className="h-full w-full" />
               <Skeleton className="h-full w-full" />
@@ -111,7 +111,7 @@ export default function DashboardLayout({
   return (
     <div className="flex flex-col min-h-screen">
       <DashboardHeader />
-      <main className="flex-1 p-4 md:p-6 lg:p-8 mb-16 md:mb-0">
+      <main className="flex-1 p-4 md:p-6 lg:p-8 mb-16">
         {children}
       </main>
       <BottomNavBar />
